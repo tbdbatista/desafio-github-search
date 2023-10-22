@@ -1,5 +1,6 @@
 package br.com.igorbag.githubsearch.ui
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -51,13 +52,17 @@ class MainActivity : AppCompatActivity() {
         //@TODO 3 - Persistir o usuario preenchido na editText com a SharedPref no listener do botao salvar
 
         val newUser = nomeUsuario.text.toString()
-        sharedPreferences = this.getSharedPreferences("MySharedPreferences", MODE_PRIVATE)
-        sharedPreferences.edit().putString("user_name", newUser)
-        sharedPreferences.edit().apply()
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE) ?: return
+        with(sharedPreferences.edit()) {
+            putString("user_name", newUser)
+            apply()
+        }
     }
 
     private fun showUserName() {
         //@TODO 4- depois de persistir o usuario exibir sempre as informacoes no EditText  se a sharedpref possuir algum valor, exibir no proprio editText o valor salvo
+        sharedPreferences = this.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+        nomeUsuario.settext(sharedPreferences.getString("user_name"))
     }
 
     //Metodo responsavel por fazer a configuracao base do Retrofit
