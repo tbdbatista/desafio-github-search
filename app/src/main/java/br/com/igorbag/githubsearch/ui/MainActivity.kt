@@ -1,6 +1,7 @@
 package br.com.igorbag.githubsearch.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnConfirmar: Button
     lateinit var listaRepositories: RecyclerView
     lateinit var githubApi: GitHubService
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,11 @@ class MainActivity : AppCompatActivity() {
     // salvar o usuario preenchido no EditText utilizando uma SharedPreferences
     private fun saveUserLocal() {
         //@TODO 3 - Persistir o usuario preenchido na editText com a SharedPref no listener do botao salvar
+
+        val newUser = nomeUsuario.text.toString()
+        sharedPreferences = this.getSharedPreferences("MySharedPreferences", MODE_PRIVATE)
+        sharedPreferences.edit().putString("user_name", newUser)
+        sharedPreferences.edit().apply()
     }
 
     private fun showUserName() {
