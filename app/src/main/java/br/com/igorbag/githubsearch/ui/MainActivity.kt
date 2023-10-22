@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var listaRepositories: RecyclerView
     lateinit var githubApi: GitHubService
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setupView()
         showUserName()
         setupRetrofit()
+        setupListeners()
         getAllReposByUserName()
     }
 
@@ -123,8 +123,8 @@ class MainActivity : AppCompatActivity() {
             passando a listagem dos repositorios
          */
         val adapter = RepositoryAdapter(list, this::shareRepositoryLink, this::openBrowser)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        listaRepositories.adapter = adapter
+        listaRepositories.layoutManager = LinearLayoutManager(this)
     }
 
 
