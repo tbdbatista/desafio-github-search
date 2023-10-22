@@ -38,6 +38,9 @@ class MainActivity : AppCompatActivity() {
     //metodo responsavel por configurar os listeners click da tela
     private fun setupListeners() {
         //@TODO 2 - colocar a acao de click do botao confirmar
+        btnConfirmar.setOnClickListener() {
+            saveUserLocal()
+        }
     }
 
 
