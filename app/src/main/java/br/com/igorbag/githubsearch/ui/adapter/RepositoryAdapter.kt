@@ -12,9 +12,7 @@ import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.domain.Repository
 
 class RepositoryAdapter(
-    private val repositories: List<Repository>,
-    private val itemCarClickListener: (String) -> Unit,
-    private val btnShareClickListener: (String) -> Unit
+    private val repositories: List<Repository>
 ) : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
 
     // Cria uma nova view
@@ -29,8 +27,8 @@ class RepositoryAdapter(
         //@TODO 8 -  Realizar o bind do viewHolder
         val repository = repositories[position]
         holder.repositoryTitle.text = repository.name
-        holder.buttonShare.setOnClickListener { btnShareClickListener(repository.htmlUrl) }
-        holder.itemView.setOnClickListener { itemCarClickListener(repository.name) }
+//        holder.buttonShare.setOnClickListener { btnShareClickListener(repository.htmlUrl) }
+//        holder.itemView.setOnClickListener { itemCarClickListener(repository.name) }
     }
 
     // Pega a quantidade de repositorios da lista
@@ -40,8 +38,8 @@ class RepositoryAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //@TODO 10 - Implementar o ViewHolder para os repositorios
 
-        val repositoryTitle: TextView = view.findViewById(R.id.tv_titulo)
-        val buttonShare: View = view.findViewById(R.id.cl_card_content)
+        val repositoryTitle: TextView = view.findViewById(R.id.tv_preco)
+//        val buttonShare: View = view.findViewById(R.id.cl_card_content)
 
     }
 }

@@ -122,9 +122,9 @@ class MainActivity : AppCompatActivity() {
             @TODO 7 - Implementar a configuracao do Adapter , construir o adapter e instancia-lo
             passando a listagem dos repositorios
          */
-        val adapter = RepositoryAdapter(list, this::shareRepositoryLink, this::openBrowser)
-        listaRepositories.adapter = adapter
+        val adapter = RepositoryAdapter(list)
         listaRepositories.layoutManager = LinearLayoutManager(this)
+        listaRepositories.adapter = adapter
     }
 
 
