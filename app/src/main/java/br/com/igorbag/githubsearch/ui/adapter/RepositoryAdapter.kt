@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.domain.Repository
 
 class RepositoryAdapter(
     private val repositories: List<Repository>,
-    //    private val itemCarClickListener: (String) -> Unit,
+    private val itemCarClickListener: (String) -> Unit,
     private val btnShareClickListener: (String) -> Unit
 ) : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
 
@@ -29,8 +28,8 @@ class RepositoryAdapter(
         //@TODO 8 -  Realizar o bind do viewHolder
         val repository = repositories[position]
         holder.repositoryTitle.text = repository.name
+        holder.itemView.setOnClickListener { itemCarClickListener(repository.htmlUrl) }
         holder.buttonShare.setOnClickListener { btnShareClickListener(repository.htmlUrl) }
-//        holder.itemView.setOnClickListener { itemCarClickListener(repository.name) }
     }
 
     // Pega a quantidade de repositorios da lista
@@ -41,7 +40,7 @@ class RepositoryAdapter(
         //@TODO 10 - Implementar o ViewHolder para os repositorios
 
         val repositoryTitle: TextView = view.findViewById(R.id.tv_preco)
-        val buttonShare: View = view.findViewById(R.id.cl_card_content)
+        val buttonShare: ImageView = view.findViewById(R.id.iv_favorite)
 
     }
 }
