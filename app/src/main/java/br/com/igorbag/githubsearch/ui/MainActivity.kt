@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         //@TODO 2 - colocar a acao de click do botao confirmar
         btnConfirmar.setOnClickListener() {
             saveUserLocal()
+            getAllReposByUserName()
         }
     }
 
